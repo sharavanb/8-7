@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云南安企网络科技有限公司</title>
+    <link rel="icon" href="http://ynanqi.icu/img/favicon.png" type="image/png">
+    <link href="./page1_files/bootstrap.min.css" rel="stylesheet">
+    <link href="./page1_files/font-awesome.css" rel="stylesheet">
+    <link href="./page1_files/animate.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #64748b;
+            --accent: #3b82f6;
+            --background: #ffffff;
+            --surface: #f8fafc;
+            --text: #0f172a;
+            --text-light: #475569;
+        }
+
+        /* Logo Styles */
+        .logo-text {
+            font-family: 'STXingkai', 'FZXingKai-S04S', 'KaiTi', serif;
+            font-size: 32px;
+            font-weight: bold;
+            position: relative;
+            text-decoration: none;
+            padding: 8px 12px;
+            letter-spacing: 4px;
+            background: linear-gradient(120deg, 
+                var(--primary) 0%, 
+                var(--accent) 50%, 
+                var(--primary-dark) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s infinite;
+            text-shadow: 0 0 1px rgba(0,0,0,0.1);
+        }
+
+        .logo-text::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--primary) 50%, 
+                transparent 100%);
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+            opacity: 0;
+        }
+
+        .logo-text:hover::after {
+            width: 80%;
+            opacity: 1;
+        }
+
+        .logo-text:hover {
+            transform: scale(1.02);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background-position: right center;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+            100% { background-position: 0% center; }
+        }
+
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 28px;
+                padding: 6px 8px;
+                letter-spacing: 2px;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--background);
+        }
+
+        .section-padding {
+            padding: 6rem 0;
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #ffffff;
+            z-index: 1000;
+            padding: 0.5rem 0;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* 新增服务流程部分 */
+        .process {
+            background: var(--surface);
+            padding: 6rem 0;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .process-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .process-item:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            font-size: 2rem;
+        }
+
+        .process-number {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: bold;
+        }
+
+        /* 新增技术栈部分 */
+        .tech-stack {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 2rem;
+        }
+
+        .tech-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--surface);
+            border-radius: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .tech-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* 新增客户案例部分 */
+        .cases {
+            padding: 6rem 0;
+            background: var(--surface);
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .case-item {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .case-content {
+            padding: 2rem;
+        }
+
+        .case-tag {
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 1024px) {
+            .process-grid,
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-item:not(:last-child)::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tech-grid,
+            .case-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: url('./page1_files/main_device_image.jpg') center/cover fixed;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0,0,0,0.8), rgba(0,0,0,0.4));
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            position: relative;
+            color: white;
+        }
+
+        .hero-text {
+            max-width: 600px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .welcome {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 0.5rem;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--surface);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background: var(--primary);
+            bottom: -10px;
+            left: 20%;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .about-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .about-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .about-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-icon {
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-icon {
+            transform: scale(1.1);
+        }
+
+        .portfolio-content h3 {
+            color: var(--text);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .portfolio-content p {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Features Section */
+        .features {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .feature-item i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--surface);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+        }
+
+        .contact-info {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .contact-card i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.5rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-info p {
+            margin-top: 1rem;
+            color: #94a3b8;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            line-height: 2;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+        }
+
+        @media (max-width: 1024px) {
+            .about-grid,
+            .portfolio-grid,
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-grid,
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .about-grid,
+            .portfolio-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-padding {
+                padding: 4rem 0;
+            }
+        }
+
+        /* 优化 favicon 样式 */
+        .favicon-text {
+            font-family: 'STXingkai', 'FZXingKai-S04S', 'KaiTi', serif;
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--primary);
+            background: transparent;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo-text company-name" id="companyLogo">
+                <svg width="200" height="60" id="logoSvg">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:var(--primary);stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:var(--accent);stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:var(--primary-dark);stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" 
+                          fill="url(#logoGradient)" 
+                          style="font-family: 'STXingkai', 'FZXingKai-S04S', 'KaiTi', serif; font-size: 32px; font-weight: bold;">
+                        云南安企
+                    </text>
+                </svg>
+            </a>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">关于我们</a>
+                <a href="#process" class="nav-link">服务流程</a>
+                <a href="#features" class="nav-link">核心优势</a>
+                <a href="#portfolio" class="nav-link">项目展示</a>
+                <a href="#tech" class="nav-link">技术栈</a>
+                <a href="#cases" class="nav-link">客户案例</a>
+                <a href="#contact" class="nav-link">联系我们</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">云南安企</h1>
+                <p class="hero-subtitle">专注于人工智能及元宇宙应用软件开发。珠峰技云创始团队在大数据、人工智能、区块链等相关技术方向有着十余年积累，技术实力雄厚。</p>
+                <div class="welcome">云南安企网络科技有限公司是一家人工智能及元宇宙应用软件开发商</div>
+                <a href="#contact" class="btn">联系我们</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>关于我们</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <i class="fa fa-rocket"></i>
+                    <h3>创新驱动</h3>
+                    <p>持续创新，引领行业发展</p>
+                </div>
+                <div class="about-card">
+                    <i class="fa fa-users"></i>
+                    <h3>专业团队</h3>
+                    <p>经验丰富的精英团队</p>
+                </div>
+                <div class="about-card">
+                    <i class="fa fa-shield"></i>
+                    <h3>品质保证</h3>
+                    <p>严格的质量管理体系</p>
+                </div>
+            </div>
+            <div class="about-content">
+                <h3>公司简介</h3>
+                <p>云南安企网络科技有限公司的经营范围包括一般项目：信息技术咨询服务；数据处理和存储支持服务；互联网设备销售；组织文化艺术交流活动；计算机系统服务；科技中介服务；技术服务、技术开发、技术咨询、技术交流、技术转让、技术推广；信息系统集成服务；信息咨询服务（不含许可类信息咨询服务）；软件开发；网络设备销售；网络与信息安全软件开发；物联网技术服务；电子产品销售；计算机软硬件及辅助设备批发；计算机软硬件及辅助设备零售。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="process">
+        <div class="container">
+            <div class="section-title">
+                <h2>服务流程</h2>
+            </div>
+            <div class="process-grid">
+                <div class="process-item">
+                    <div class="process-number">1</div>
+                    <h3>需求分析</h3>
+                    <p>深入了解客户需求，制定解决方案</p>
+                </div>
+                <div class="process-item">
+                    <div class="process-number">2</div>
+                    <h3>方案设计</h3>
+                    <p>专业团队设计最优解决方案</p>
+                </div>
+                <div class="process-item">
+                    <div class="process-number">3</div>
+                    <h3>开发实施</h3>
+                    <p>高效开发，严格把控质量</p>
+                </div>
+                <div class="process-item">
+                    <div class="process-number">4</div>
+                    <h3>交付服务</h3>
+                    <p>部署上线，持续技术支持</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>核心优势</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fa fa-cog"></i>
+                    <h3>技术领先</h3>
+                    <p>采用行业领先技术</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fa fa-clock-o"></i>
+                    <h3>高效服务</h3>
+                    <p>快速响应客户需求</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fa fa-heart"></i>
+                    <h3>用心服务</h3>
+                    <p>以客户为中心</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fa fa-diamond"></i>
+                    <h3>品质保证</h3>
+                    <p>追求卓越品质</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>项目展示</h2>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <svg class="portfolio-icon" viewBox="0 0 24 24" width="80" height="80">
+                        <path fill="currentColor" d="M12 2L1 12h3v9h6v-6h4v6h6v-9h3L12 2zM12 4.8l6 5.4v8.8h-2v-6H8v6H6v-8.8l6-5.4z"/>
+                    </svg>
+                    <div class="portfolio-content">
+                        <h3>智慧家居</h3>
+                        <p>智能家居整体解决方案，包含智能控制、安防监控、能源管理等多个子系统</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <svg class="portfolio-icon" viewBox="0 0 24 24" width="80" height="80">
+                        <path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v14zM6 10h2v2H6zm0 4h8v2H6z"/>
+                    </svg>
+                    <div class="portfolio-content">
+                        <h3>企业管理系统</h3>
+                        <p>一站式企业管理平台，集成人事、财务、库存、客户关系等管理功能</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <svg class="portfolio-icon" viewBox="0 0 24 24" width="80" height="80">
+                        <path fill="currentColor" d="M17 16l-4-4V8.82C14.16 8.4 15 7.3 15 6c0-1.66-1.34-3-3-3S9 4.34 9 6c0 1.3.84 2.4 2 2.82V12l-4 4H3v5h5v-3.05l4-4.2 4 4.2V21h5v-5h-4z"/>
+                    </svg>
+                    <div class="portfolio-content">
+                        <h3>物联网平台</h3>
+                        <p>工业物联网解决方案，实现设备远程监控、数据分析、预测维护</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <svg class="portfolio-icon" viewBox="0 0 24 24" width="80" height="80">
+                        <path fill="currentColor" d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/>
+                    </svg>
+                    <div class="portfolio-content">
+                        <h3>用户管理系统</h3>
+                        <p>完整的用户管理解决方案，支持多角色权限、数据统计分析</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <svg class="portfolio-icon" viewBox="0 0 24 24" width="80" height="80">
+                        <path fill="currentColor" d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                    </svg>
+                    <div class="portfolio-content">
+                        <h3>医疗信息系统</h3>
+                        <p>医疗行业信息化解决方案，包含电子病历、远程诊疗、智能分诊等功能</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tech" class="tech-stack">
+        <div class="container">
+            <div class="section-title">
+                <h2>技术栈</h2>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <i class="fa fa-code tech-icon"></i>
+                    <h3>前端开发</h3>
+                    <p>React/Vue.js</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fa fa-database tech-icon"></i>
+                    <h3>后端开发</h3>
+                    <p>Node.js/Java</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fa fa-mobile tech-icon"></i>
+                    <h3>移动开发</h3>
+                    <p>iOS/Android</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fa fa-cloud tech-icon"></i>
+                    <h3>云服务</h3>
+                    <p>AWS/阿里云</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fa fa-shield tech-icon"></i>
+                    <h3>网络安全</h3>
+                    <p>安全防护</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fa fa-cogs tech-icon"></i>
+                    <h3>运维服务</h3>
+                    <p>DevOps</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cases" class="cases">
+        <div class="container">
+            <div class="section-title">
+                <h2>客户案例</h2>
+            </div>
+            <div class="case-grid">
+                <div class="case-item">
+                    <div class="case-content">
+                        <span class="case-tag">金融行业</span>
+                        <h3>某大型银行智能网点系统</h3>
+                        <p>为客户打造智能化网点管理系统，提升服务效率</p>
+                    </div>
+                </div>
+                <div class="case-item">
+                    <div class="case-content">
+                        <span class="case-tag">医疗行业</span>
+                        <h3>医院智慧医疗平台</h3>
+                        <p>构建全流程智慧医疗服务平台，提升患者体验</p>
+                    </div>
+                </div>
+                <div class="case-item">
+                    <div class="case-content">
+                        <span class="case-tag">教育行业</span>
+                        <h3>在线教育系统开发</h3>
+                        <p>开发现代化在线教育平台，支持多端访问</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>联系我们</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fa fa-map-marker"></i>
+                        <div>
+                            <h3>云南省昆明市官渡区关上街道日新路红河谷小区A栋三单元301</h3>
+                            <p>云南省昆明市官渡区关上街道日新路红河谷小区A栋三单元301</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fa fa-globe"></i>
+                        <div>
+                            <h3>官方网站</h3>
+                            <a href="http://ynanqi.icu" target="_blank">ynanqi.icu</a>
+                        </div>
+                    </div>
+            
+                </div>
+                <div class="contact-form">
+                    <h3>发送消息</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="您的姓名">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="电子邮箱">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="5" placeholder="请输入您的留言"></textarea>
+                        </div>
+                        <button type="submit" class="btn">发送消息</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>云南安企</h3>
+                    <p>专注于人工智能及元宇宙应用软件开发。珠峰技云创始团队在大数据、人工智能、区块链等相关技术方向有着十余年积累，技术实力雄厚。</p>
+                </div>
+                <div class="footer-links">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#about">关于我们</a></li>
+                        <li><a href="#process">服务流程</a></li>
+                        <li><a href="#features">核心优势</a></li>
+                        <li><a href="#portfolio">项目展示</a></li>
+                        <li><a href="#tech">技术栈</a></li>
+                        <li><a href="#cases">客户案例</a></li>
+                        <li><a href="#contact">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li><a href="http://ynanqi.icu">官方网站</a></li>
+                        <li><a href="#">云南省昆明市官渡区关上街道日新路红河谷小区A栋三单元301</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 云南安企. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./page1_files/bootstrap.min.js"></script>
+    <script>
+        // 预设渐变色组合
+        const gradientPresets = [
+            {
+                primary: '#2563eb',
+                accent: '#3b82f6',
+                primaryDark: '#1e40af'
+            },
+            {
+                primary: '#7c3aed',
+                accent: '#8b5cf6',
+                primaryDark: '#5b21b6'
+            },
+            {
+                primary: '#059669',
+                accent: '#10b981',
+                primaryDark: '#047857'
+            },
+            {
+                primary: '#dc2626',
+                accent: '#ef4444',
+                primaryDark: '#b91c1c'
+            },
+            {
+                primary: '#ea580c',
+                accent: '#f97316',
+                primaryDark: '#c2410c'
+            },
+            {
+                primary: '#0284c7',
+                accent: '#0ea5e9',
+                primaryDark: '#0369a1'
+            }
+        ];
+
+        // 随机选择渐变色组合
+        function getRandomGradient() {
+            return gradientPresets[Math.floor(Math.random() * gradientPresets.length)];
+        }
+
+        // 应用渐变色
+        function applyGradientColors() {
+            const colors = getRandomGradient();
+            const root = document.documentElement;
+            
+            // 更新CSS变量
+            root.style.setProperty('--primary', colors.primary);
+            root.style.setProperty('--accent', colors.accent);
+            root.style.setProperty('--primary-dark', colors.primaryDark);
+
+            // 更新SVG渐变
+            const gradient = document.querySelector('#logoGradient');
+            gradient.innerHTML = `
+                <stop offset="0%" style="stop-color:${colors.primary};stop-opacity:1" />
+                <stop offset="50%" style="stop-color:${colors.accent};stop-opacity:1" />
+                <stop offset="100%" style="stop-color:${colors.primaryDark};stop-opacity:1" />
+            `;
+        }
+
+        // 动态生成 favicon
+        function generateFavicon() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 64;
+            canvas.height = 64;
+            const ctx = canvas.getContext('2d');
+            
+            // 获取云南安企网络科技有限公司
+            const companyName = document.querySelector('#logoSvg text').textContent.trim();
+            // 处理云南安企网络科技有限公司（去除"市"字，取前4个字）
+            const processedName = companyName.replace('市', '').substring(0, 4);
+            
+            // 设置字体样式
+            ctx.font = 'bold 32px STXingkai, FZXingKai-S04S, KaiTi, serif';
+            ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            // 绘制文字
+            ctx.fillText(processedName.substring(0, 2), 32, 24);
+            if (processedName.length > 2) {
+                ctx.fillText(processedName.substring(2), 32, 44);
+            }
+            
+            // 创建favicon链接
+            const link = document.createElement('link');
+            link.type = 'image/x-icon';
+            link.rel = 'shortcut icon';
+            link.href = canvas.toDataURL('image/png');
+            
+            // 替换现有favicon
+            const existingFavicon = document.querySelector('link[rel="icon"]');
+            if (existingFavicon) {
+                document.head.removeChild(existingFavicon);
+            }
+            document.head.appendChild(link);
+        }
+
+        // 处理云南安企网络科技有限公司
+        function processCompanyName() {
+            const logoText = document.querySelector('#logoSvg text');
+            const fullName = logoText.textContent.trim();
+            
+            // 使用完整名字，不再截取
+            document.querySelector('.hero-title').textContent = fullName;
+            
+            // footer使用完整名字
+            document.querySelector('.footer-info h3').textContent = fullName;
+            document.querySelector('.footer-bottom p').textContent = 
+                `© ${new Date().getFullYear()} ${fullName}. All rights reserved.`;
+        }
+
+        // 页面加载完成后初始化
+        window.addEventListener('load', () => {
+            applyGradientColors(); // 先应用随机渐变色
+            processCompanyName();
+            generateFavicon();
+        });
+
+        // 添加logo动画效果
+        const logoSvg = document.querySelector('#logoSvg');
+        logoSvg.addEventListener('mouseover', () => {
+            const gradient = document.querySelector('#logoGradient');
+            gradient.innerHTML += `
+                <animate attributeName="x1" values="0%;100%;0%" dur="3s" repeatCount="1"/>
+                <animate attributeName="x2" values="100%;200%;100%" dur="3s" repeatCount="1"/>
+            `;
+        });
+    </script>
+</body>
+</html>
